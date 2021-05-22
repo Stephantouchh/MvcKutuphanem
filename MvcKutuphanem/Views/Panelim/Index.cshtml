@@ -1,0 +1,136 @@
+﻿@using MvcKutuphanem.Models.Entity
+@model List<TBLDUYURULAR>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPanelim.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | User Profile</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+    <!-- Navbar -->
+    <!-- Content Wrapper. Contains page content -->
+    <!-- Content Header (Page header) -->
+
+    <div class="col-sm-6">
+        <h1>Profilim</h1>
+    </div>
+    <br />
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Profile Image -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle"
+                                     src="@ViewBag.d3"
+                                     alt="User profile picture">
+                            </div>
+                            <h3 class="profile-username text-center">@ViewBag.d1 @ViewBag.d2</h3>
+                            <p class="text-muted text-center">Kütüphane Üyesi</p>
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>Okuduğum Kitap Sayım:</b> <a class="float-right">@ViewBag.d8</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Gelen Mesaj Sayım:</b> <a class="float-right">@ViewBag.d9</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Duyuru Sayısı:</b> <a class="float-right">@ViewBag.d10</a>
+                                </li>
+                            </ul>
+                            <a href="/istatistik/Index/" class="btn btn-primary btn-block"><b>Yönetim Paneline Git</b></a>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                    <!-- About Me Box -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Hakkımda</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <strong><i class="far fa-file-alt mr-1"></i> Mail Adresim</strong>
+                            <p class="text-muted"> @ViewBag.d7</p>
+                            <strong><i class="fas fa-pencil-alt mr-1"></i> Kullanıcı Adım</strong>
+                            <p class="text-muted">    @ViewBag.d4</p>
+                            <hr>
+                            <strong><i class="fas fa-phone"></i> Telefonum</strong>
+                            <p class="text-muted">@ViewBag.d6</p>
+                            <hr>
+                            <strong><i class="fas fa-book mr-1"></i> Okulum</strong>
+                            <p class="text-muted">
+                                @ViewBag.d5
+                            </p>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Duyurular</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Ayarlar</a></li>
+                            </ul>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="activity">
+                                    <!-- Post -->
+                                    @Html.Partial("Partial1")
+                                    <!-- /.post -->
+                                </div>
+                                <div class="tab-pane" id="settings">
+                                    @Html.Action("Partial2", "Panelim")
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div><!-- /.card-body -->
+                    </div>
+                    <!-- /.nav-tabs-custom -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    <!-- /.content-wrapper -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+</body>
+</html>

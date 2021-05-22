@@ -1,0 +1,28 @@
+﻿@model MvcKutuphanem.Models.Entity.TBLDUYURULAR
+@{
+    ViewBag.Title = "DuyuruDetay";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("DuyuruGuncelle", "Duyuru", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        <label>Duyuru NO</label>
+        @Html.TextBoxFor(k => k.ID, new { @class = "form-control" })
+        <br />
+        <label>Duyuru Kategorisi</label>
+        @Html.TextBoxFor(k => k.KATEGORI, new { @class = "form-control" })
+        <br />
+        <label>Duyuru İçeriği</label>
+        @Html.TextAreaFor(k => k.ICERIK, new { @class = "form-control" })
+        <br />
+        <label>Duyuru Tarihi</label>
+        @Html.TextBoxFor(k => k.TARIH, new { @class = "form-control" })
+        <br />
+    </div>
+    <div>
+        <button class="btn btn-warning">Duyuru Bilgilerini Güncelle</button>
+    </div>
+}
+

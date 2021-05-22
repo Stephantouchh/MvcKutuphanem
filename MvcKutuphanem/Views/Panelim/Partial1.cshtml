@@ -1,0 +1,19 @@
+﻿@using MvcKutuphanem.Models.Entity
+@model List<TBLDUYURULAR>
+@foreach (var x in Model)
+{
+    <div class="post">
+        <div class="user-block">
+            <img class="img-circle img-bordered-sm" src="~/AdminLTE-3.0.4/dist/img/user2-160x160.jpg" alt="user image">
+            <span class="username">
+                <a href="#">@x.KATEGORI</a>
+                <a href="#" class="float-right btn-tool">@*<i class="fas fa-times"></i>*@</a>
+            </span>
+            <span class="description">@Convert.ToDateTime(x.TARIH).ToString("dd/MM/yyyy")</span>
+        </div>
+        <!-- /.user-block -->
+        <p>
+            @x.ICERIK
+        </p>
+    </div>
+}

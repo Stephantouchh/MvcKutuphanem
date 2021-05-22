@@ -1,0 +1,48 @@
+﻿@using MvcKutuphanem.Models.Entity
+@model List<TBLKITAP>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Kitap İşlemleri</h2>
+
+@using (Html.BeginForm("Index", "Kitap", FormMethod.Get))
+{
+    <div style="margin-bottom:15px; margin-top:15px;">
+        <b>Aranacak Kitap Adını Giriniz: &nbsp; </b>@Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </div>
+}
+<table class="table table-striped">
+    <tr style="background-color:rgb(252, 178, 22)">
+        <th>NO</th>
+        <th>KİTAP ADI</th>
+        <th>KİTAP YAZARI</th>
+        <th>KATEGORİSİ</th>
+        <th>BASIM YILI</th>
+        <th>YAYINEVİ</th>
+        <th>SAYFA SAYISI</th>
+        <th>DURUMU</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    @foreach (var ktp in Model)
+    {
+        <tr>
+            <td>@ktp.ID</td>
+            <td>@ktp.AD</td>
+            <td>@ktp.TBLYAZAR.AD @ktp.TBLYAZAR.SOYAD</td>
+            <td>@ktp.TBLKATEGORI.AD</td>
+            <td>@ktp.BASIMYIL</td>
+            <td>@ktp.YAYINEVİ</td>
+            <td>@ktp.SAYFA</td>
+            <td>@ktp.DURUM</td>
+            <td>@Html.ActionLink("Sil", "KitapSil", new { id = ktp.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz?')" })</td>
+            <td><a href="/Kitap/KitapGetir/@ktp.ID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Kitap/KitapEkle/" class="btn btn-primary">Yeni Kitap Ekle</a>
+
+

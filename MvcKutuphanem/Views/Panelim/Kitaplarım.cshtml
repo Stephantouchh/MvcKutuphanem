@@ -1,0 +1,143 @@
+﻿@using MvcKutuphanem.Models.Entity
+
+@model List<TBLHAREKET>
+
+@{
+
+    ViewBag.Title = "Kitaplarim";
+
+    Layout = "~/Views/Shared/_LayoutPanelim.cshtml";
+
+}
+
+
+<h4>Okuduğum Kitap Listem</h4>
+<!DOCTYPE html>
+
+<html>
+
+<body class="hold-transition sidebar-mini">
+
+    <section class="content">
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+
+
+                <!-- /.col -->
+
+                <div class="col-md-12">
+
+                    <div class="card">
+
+                        <div class="card-header p-2">
+
+
+
+                        </div><!-- /.card-header -->
+
+                        <div class="card-body">
+
+
+
+                            <div class="tab-pane" id="timeline">
+
+                                <!-- The timeline -->
+
+                                <div class="timeline timeline-inverse">
+
+                                    <!-- timeline time label -->
+
+                                    @foreach (var item in Model)
+
+                                    {
+
+                                        <div class="time-label">
+
+                                            <a class="btn btn-success">
+
+                                                <span class="bg-success">
+
+                                                    @(((DateTime)item.ALISTARIH).ToString("dd-MMM-yyyy"))
+
+                                                </span>
+
+                                            </a>
+
+                                            ------
+
+                                            <a class="btn btn-warning">
+
+                                                <span class="bg-warning">
+
+                                                    @(((DateTime)item.UYEGETIRTARIH).ToString("dd-MMM-yyyy"))
+
+                                                </span>
+
+                                            </a>
+
+                                        </div>
+
+                                        <!-- /.timeline-label -->
+
+                                        <!-- timeline item -->
+
+                                        <div>
+
+                                            @*<i class="fas fa-comment bg-primary"></i>*@
+
+                                            <div class="timeline-item">
+
+                                                <div class="timeline-body">
+
+                                                    Kitap Adı : @item.TBLKITAP.AD
+
+                                                </div>
+                                                <div class="timeline-body">
+
+                                                    Kitap Yazarı : @item.TBLKITAP.TBLYAZAR.AD @item.TBLKITAP.TBLYAZAR.SOYAD 
+
+                                                </div>
+
+
+                                                @*<div class="timeline-footer">
+
+            <a href="#" class="btn btn-primary btn-sm">Düzenle</a>
+
+            <a href="#" class="btn btn-danger btn-sm">Sil</a>
+
+        </div>*@
+
+                                            </div>
+
+                                        </div>
+
+                                    }
+
+                                </div>
+
+                                @*<a href="/Sertifika/YeniSertifika" class="btn btn-info">Yeni Sertifika Girişi</a>*@
+
+                            </div>
+
+                        </div>
+
+                    </div><!-- /.card-body -->
+
+                </div>
+
+                <!-- /.nav-tabs-custom -->
+
+            </div>
+
+            <!-- /.col -->
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

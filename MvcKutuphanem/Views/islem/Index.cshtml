@@ -1,0 +1,36 @@
+﻿@using MvcKutuphanem.Models.Entity
+@model List<TBLHAREKET>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>İadesi Gerçekleşen Kitap Listesi</h2>
+<br />
+
+<table class="table table-striped">
+    <tr style="background-color:rgb(252, 178, 22)">
+        <th>İŞLEM NO</th>
+        <th>KİTAP ADI</th>
+        <th>ÜYE</th>
+        <th>PERSONEL</th>
+        <th>ALIŞ TARİHİ</th>
+        <th>ÜYE İADE TARİHİ</th>
+        <th>DETAYLAR</th>
+    </tr>
+    @foreach (var ktp in Model)
+    {
+        <tr>
+            <td>@ktp.ID</td>
+            <td>@ktp.TBLKITAP.AD</td>
+            <td>@ktp.TBLUYELER.AD @ktp.TBLUYELER.SOYAD</td>
+            <td>@ktp.TBLPERSONEL.PERSONEL</td>
+            <td>@Convert.ToDateTime(ktp.ALISTARIH).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(ktp.UYEGETIRTARIH).ToString("dd/MM/yyyy")</td>
+            <td><a href="/Odunc/Odunciade/@ktp.ID" class="btn btn-default" style="background-color:#f87cdf">Detaylar</a></td>
+        </tr>
+    }
+</table>
+
+
+

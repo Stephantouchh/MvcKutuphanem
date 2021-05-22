@@ -1,0 +1,55 @@
+﻿@using MvcKutuphanem.Models.Entity
+@model List<TBLDUYURULAR>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    string renk = "";
+}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery/min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<h2>Duyurular</h2>
+<br />
+<div style="margin-bottom:15px; margin-top:15px;"></div>
+
+<table class="table table-striped">
+    <tr style="background-color:rgb(252, 178, 22)">
+        <th>DUYURU NO</th>
+        <th>KATEGORİ</th>
+        <th>TARİH</th>
+        <th>SİL</th>
+        @*<th>GÜNCELLE</th>*@
+        <th>İÇERİK</th>
+    </tr>
+    @foreach (var ktg in Model)
+    {
+        if (ktg.KATEGORI == "Diğer")
+        {
+            renk = "bg-info text-white";
+        }
+        if (ktg.KATEGORI == "Yeni Kitap")
+        {
+            renk = "bg-warning text-white";
+        }
+        if (ktg.KATEGORI == "İletişim")
+        {
+            renk = "bg-danger text-white";
+        }
+        if (ktg.KATEGORI == "Kitapları Geciktirmeyin")
+        {
+            renk = "bg-success text-white";
+        }
+        <tr class="@renk">
+            <td>@ktg.ID</td>
+            <td >@ktg.KATEGORI</td>
+            <td>@Convert.ToDateTime(ktg.TARIH).ToString("dd/MM/yyyy")</td>
+            <td>@Html.ActionLink("Sil", "DuyuruSil", new { id = ktg.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz?')" })</td>
+            @*<td><a href="/Duyuru/DuyuruGetir/@ktg.ID" class="btn btn-success">Güncelle</a></td>*@
+            <td><a href="/Duyuru/DuyuruDetay/@ktg.ID" class="btn btn-default" style="background-color:lightseagreen; color:darkblue">Detaya Git ---></a></td>
+        </tr>
+    }
+</table>
+<a href="/Duyuru/YeniDuyuru/" class="btn btn-primary">Yeni Duyuru Ekle</a>

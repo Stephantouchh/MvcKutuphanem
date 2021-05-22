@@ -1,0 +1,28 @@
+﻿@using MvcKutuphanem.Models.Entity
+@model List<TBLKITAP>
+@{
+    ViewBag.Title = "YazarKitaplar";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h1>Kitap Yazarı: @ViewBag.y1</h1>
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>KİTAP ADI</th>
+        <th>KATEGORİ</th>
+        <th>YAYINEVİ</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.ID</td>
+            <td>@x.AD</td>
+            <td>@x.TBLKATEGORI.AD</td>
+            <td>@x.YAYINEVİ</td>
+        </tr>
+    }
+</table>
+
+

@@ -1,0 +1,57 @@
+﻿@using MvcKutuphanem.Models.Entity
+@model List<TBLADMİN>
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Kullanıcı</th>
+        <th>Yetki</th>
+        <th>Sil</th>
+        <th>Düzenle</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.ID</td>
+            <td>@x.KULLANİCİ</td>
+            <td>@x.YETKİ</td>
+            <td>@Html.ActionLink("Sil", "AdminSil", new { id = x.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz?')" })</td>
+            <td><a href="/Ayarlar/AdminGuncelle/@x.ID" class="btn btn-info">Düzenle</a></td>
+        </tr>
+    }
+</table>
+<br />
+<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">Yeni Admin Ekle</button>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Admin Ekleme Paneli</h2>
+            </div>
+            <form method="post" action="/Ayarlar/YeniAdmin/">
+                <div class="modal-body">
+                    <label>Kullanıcı Adı:</label>
+                    <input type="text" name="KULLANİCİ" class="form-control" />
+                    <br />
+                    <label>Şifre:</label>
+                    <input type="text" name="SİFRE" class="form-control" />
+                    <br />
+                    <label>Yetki:</label>
+                    <input type="text" name="YETKİ" class="form-control" />
+                    <br />
+                    <button class="btn btn-info">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿@using MvcKutuphanem.Models.Entity
+@model List<TBLHAREKET>
+@{
+    ViewBag.Title = "UyeKitapGecmis";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h1>Üye Adı ve Soyadı: @ViewBag.u1</h1>
+<br />
+<table class="table table-dark">
+    <tr>
+        <th>KİTAP ADI</th>
+        <th>PERSONEL</th>
+        <th>ALIŞ TARİHİ</th>
+        <th>İADE TARİHİ</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.TBLKITAP.AD</td>
+            <td>@x.TBLPERSONEL.PERSONEL</td>
+            <td>@Convert.ToDateTime(x.ALISTARIH).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(x.UYEGETIRTARIH).ToString("dd/MM/yyyy")</td>
+        </tr>
+    }
+</table>
+
