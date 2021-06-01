@@ -11,7 +11,7 @@ namespace MvcKutuphanem.Controllers
     [AllowAnonymous]
     public class AdminController : Controller
     {
-        // GET: Admintest
+        // GET: Adminn
         DBKUTUPHANEEntities db = new DBKUTUPHANEEntities();
         public ActionResult Login()
         {
